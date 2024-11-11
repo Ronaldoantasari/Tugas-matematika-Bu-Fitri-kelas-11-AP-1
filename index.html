@@ -1,0 +1,174 @@
+<html>
+<head>
+    <title>TUGAS MATEMATIKA KELAS 11 AP 1 </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            margin: auto;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            table-layout: fixed;
+        }
+        td, th {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .heart, .star {
+            position: absolute;
+            font-size: 50px;
+            cursor: pointer;
+            display: block;
+            animation: move 5s infinite linear;
+        }
+        .heart {
+            top: 20%;
+            left: 10%;
+        }
+        .star {
+            top: 30%;
+            left: 80%;
+        }
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(200px, 100px); }
+            100% { transform: translate(0, 0); }
+        }
+        .explode {
+            animation: explodeAnimation 1s forwards;
+        }
+        @keyframes explodeAnimation {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+        .message {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 30px;
+            color: #ff6347;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <th>No</th>
+                <th>Soal</th>
+                <th>Opsi</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Diketahui f(x) = 3x - 1 dan g(x) = 2x<sup>2</sup> - 3. Fungsi Komposisi g∘f (-2) adalah</td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Diketahui f(x) = x - 2 dan g(x) = 1 - 3x dan h(x) = x<sup>2</sup> - 4x + 10. Tentukan nilai f∘g∘h (-3)</td>
+                <td><input type="checkbox"></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Diketahui f(x) = 3x - 2 dan g(x) = 3x<sup>2</sup> + 1. Tentukan nilai dari:</td>
+                <td><input type="checkbox"> f∘g (2)<br>
+                    <input type="checkbox"> g∘g (-2)<br>
+                    <input type="checkbox"> f∘f (3)<br>
+                    <input type="checkbox"> g∘f (4)<br>
+                    <input type="checkbox"> f∘g (-6)</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Diketahui f(x) = 2x + 1 dan g(x) = 3x - 2. Tentukan nilai dari:</td>
+                <td><input type="checkbox"> g∘f (2)<br>
+                    <input type="checkbox"> g∘f (4)<br>
+                    <input type="checkbox"> f∘g (10)<br>
+                    <input type="checkbox"> f∘g (5)</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Diketahui f(x) = x<sup>2</sup> dan g(x) = 2x<sup>2</sup> + 2x - 1. Tentukan:</td>
+                <td><input type="checkbox"> f∘g (2)<br>
+                    <input type="checkbox"> g∘f (5)<br>
+                    <input type="checkbox"> f∘g (-7)<br>
+                    <input type="checkbox"> g∘f (2)<br>
+                    <input type="checkbox"> g∘f (-5)</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Interactive Heart Animation -->
+    <div class="heart" onclick="toggleMessage('heart')">️®</div>
+    <!-- Interactive Star Animation -->
+    <div class="star" onclick="toggleMessage('star')">𓆉</div>
+
+    <!-- Message displayed after clicking heart or star -->
+    <div id="message" class="message">Agus permen sugus</div>
+
+    <script>
+        let messageVisible = false;
+
+        // Function to toggle message when heart or star is clicked
+        function toggleMessage(type) {
+            const message = document.getElementById('message');
+            const element = type === 'heart' ? document.querySelector('.heart') : document.querySelector('.star');
+            
+            // Show message if it's not visible, hide if it is
+            if (messageVisible) {
+                message.style.display = 'none';
+                messageVisible = false;
+            } else {
+                message.style.display = 'block';
+
+                // Control the position based on the clicked element (heart or star)
+                if (type === 'heart') {
+                    message.style.top = '30%';
+                    message.style.left = '25%';
+                } else if (type === 'star') {
+                    message.style.top = '60%';
+                    message.style.left = '70%';
+                }
+
+                // Trigger explosion effect
+                element.classList.add('explode');
+                setTimeout(function() {
+                    element.classList.remove('explode');
+                }, 1000);
+
+                // Make the message disappear after 2 seconds
+                setTimeout(function() {
+                    message.style.display = 'none';
+                    messageVisible = false;
+                }, 2000);
+
+                messageVisible = true;
+            }
+        }
+    </script>
+</body>
+</html>
